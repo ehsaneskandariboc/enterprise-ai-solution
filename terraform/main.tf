@@ -95,6 +95,7 @@ module "container_apps" {
   container_image            = var.container_app_image
   acr_login_server           = module.acr.login_server
   acr_id                     = module.acr.id
+  manage_acr_role_assignment = var.manage_acr_role_assignments
   cosmos_endpoint            = module.cosmosdb.endpoint
   app_insights_connection    = module.log_analytics.connection_string
   tags                       = local.common_tags
@@ -112,6 +113,7 @@ module "aks" {
   max_node_count             = var.aks_max_node_count
   node_vm_size               = var.aks_node_vm_size
   acr_id                     = module.acr.id
+  manage_acr_role_assignment = var.manage_acr_role_assignments
   log_analytics_workspace_id = module.log_analytics.workspace_id
   tags                       = local.common_tags
 }

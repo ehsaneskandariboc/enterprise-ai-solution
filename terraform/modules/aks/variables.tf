@@ -53,6 +53,12 @@ variable "acr_id" {
   description = "ACR resource ID for AcrPull role assignment."
 }
 
+variable "manage_acr_role_assignment" {
+  type        = bool
+  description = "Whether to create the AcrPull role assignment for the kubelet identity."
+  default     = true
+}
+
 variable "log_analytics_workspace_id" {
   type        = string
   description = "Log Analytics workspace ID for monitoring."

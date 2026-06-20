@@ -77,3 +77,9 @@ variable "cosmos_vector_dimensions" {
   description = "Embedding vector dimensions for Cosmos DB vector search."
   default     = 1536
 }
+
+variable "manage_acr_role_assignments" {
+  type        = bool
+  description = "Whether Terraform manages the AcrPull role assignments for AKS and Container Apps. This requires the deploying identity to have role-assignment write permission (e.g. User Access Administrator or Owner). Set to false when that permission is unavailable; grant AcrPull out-of-band instead."
+  default     = true
+}

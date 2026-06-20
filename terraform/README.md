@@ -95,3 +95,10 @@ Configure these repository secrets/variables:
   (`cosmos_vector_dimensions`, default 1536).
 - Resource names that must be globally unique (storage, ACR, Cosmos, Function
   App, Key Vault) get a short random suffix.
+- **`manage_acr_role_assignments`** (default `true`) controls whether Terraform
+  creates the `AcrPull` role assignments for the AKS kubelet identity and the
+  Container App identity. This needs the deploying identity to have
+  `User Access Administrator` (or `Owner`). It is set to `false` in the
+  environment tfvars because the current CI service principal only has
+  `Contributor`; flip it back to `true` (or grant `AcrPull` out-of-band) once
+  that permission is available so the workloads can pull private images from ACR.

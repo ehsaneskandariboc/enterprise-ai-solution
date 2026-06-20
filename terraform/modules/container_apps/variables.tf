@@ -38,6 +38,12 @@ variable "acr_id" {
   description = "ACR resource ID (for AcrPull role assignment)."
 }
 
+variable "manage_acr_role_assignment" {
+  type        = bool
+  description = "Whether to create the AcrPull role assignment for the app identity."
+  default     = true
+}
+
 variable "cosmos_endpoint" {
   type        = string
   description = "Cosmos DB endpoint."
