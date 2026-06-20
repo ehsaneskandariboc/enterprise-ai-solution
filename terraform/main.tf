@@ -69,6 +69,7 @@ module "cosmosdb" {
 
 module "function_app" {
   source = "./modules/function_app"
+  count  = var.deploy_function_app ? 1 : 0
 
   name_prefix                = local.name_prefix
   name_compact               = local.name_compact

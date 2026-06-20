@@ -13,6 +13,11 @@ aks_node_vm_size = "Standard_D2s_v3"
 # Serverless Consumption plan — avoids the 0 dedicated-VM quota on this sub.
 function_plan_sku = "Y1"
 
+# Disabled: this subscription has 0 App Service (Microsoft.Web) compute quota in
+# East US, so even a Consumption Function App cannot be created. Request an App
+# Service quota increase (or use a region with quota) then set this to true.
+deploy_function_app = false
+
 cosmos_vector_dimensions = 1536
 
 # The CI service principal currently has Contributor but not User Access

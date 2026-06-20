@@ -78,6 +78,12 @@ variable "function_plan_sku" {
   default     = "Y1"
 }
 
+variable "deploy_function_app" {
+  type        = bool
+  description = "Whether to deploy the Azure Functions app. Requires App Service (Microsoft.Web) compute quota in the target region; set false where that quota is unavailable."
+  default     = true
+}
+
 variable "cosmos_vector_dimensions" {
   type        = number
   description = "Embedding vector dimensions for Cosmos DB vector search."

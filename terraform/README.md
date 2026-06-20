@@ -102,3 +102,8 @@ Configure these repository secrets/variables:
   environment tfvars because the current CI service principal only has
   `Contributor`; flip it back to `true` (or grant `AcrPull` out-of-band) once
   that permission is available so the workloads can pull private images from ACR.
+- **`deploy_function_app`** (default `true`) controls whether the Azure Functions
+  app is provisioned. It is set to `false` in the environment tfvars because this
+  subscription has **0 App Service (Microsoft.Web) compute quota** in East US, so
+  even a Consumption plan fails. Request an App Service quota increase (or target
+  a region with quota) and set it back to `true` to deploy Functions.

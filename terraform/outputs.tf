@@ -19,8 +19,8 @@ output "aks_kube_config_command" {
 }
 
 output "function_app_default_hostname" {
-  description = "Default hostname of the Function App."
-  value       = module.function_app.default_hostname
+  description = "Default hostname of the Function App (null when not deployed)."
+  value       = var.deploy_function_app ? module.function_app[0].default_hostname : null
 }
 
 output "container_app_fqdn" {
