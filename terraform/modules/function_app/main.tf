@@ -14,7 +14,7 @@ resource "azurerm_service_plan" "func" {
   resource_group_name = var.resource_group_name
   location            = var.location
   os_type             = "Linux"
-  sku_name            = "EP1"
+  sku_name            = var.plan_sku
   tags                = var.tags
 }
 
@@ -25,8 +25,10 @@ resource "azurerm_linux_function_app" "main" {
   service_plan_id            = azurerm_service_plan.func.id
   storage_account_name       = azurerm_storage_account.func.name
   storage_account_access_key = azurerm_storage_account.func.primary_access_key
-  virtual_network_subnet_id  = var.subnet_id
-  https_only                 = true
+  # VNet integration is only supported on Elastic Premium / dedicated plans,
+  # not on the Consumption (Y1) plan.
+  virtual_network_subnet_id = var.plan_sku == "Y1" ? null : var.subnet_id
+  https_only                = true
 
   identity {
     type = "SystemAssigned"

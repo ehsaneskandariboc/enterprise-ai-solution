@@ -4,10 +4,14 @@ project     = "entai"
 
 vnet_address_space = ["10.40.0.0/16"]
 
-aks_node_count     = 2
-aks_min_node_count = 2
-aks_max_node_count = 4
-aks_node_vm_size   = "Standard_D4s_v5"
+aks_node_count     = 1
+aks_min_node_count = 1
+aks_max_node_count = 2
+# DSv5 family has 0 quota on this subscription; DSv3 has 10 vCPUs available.
+aks_node_vm_size = "Standard_D2s_v3"
+
+# Serverless Consumption plan — avoids the 0 dedicated-VM quota on this sub.
+function_plan_sku = "Y1"
 
 cosmos_vector_dimensions = 1536
 

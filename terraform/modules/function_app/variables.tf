@@ -25,7 +25,13 @@ variable "location" {
 
 variable "subnet_id" {
   type        = string
-  description = "Subnet ID for VNet integration."
+  description = "Subnet ID for VNet integration (used only on non-Consumption plans)."
+}
+
+variable "plan_sku" {
+  type        = string
+  description = "App Service plan SKU for the Function App (e.g. Y1 = Consumption, EP1 = Elastic Premium)."
+  default     = "Y1"
 }
 
 variable "application_insights_key" {

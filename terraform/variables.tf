@@ -72,6 +72,12 @@ variable "container_app_image" {
   default     = "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest"
 }
 
+variable "function_plan_sku" {
+  type        = string
+  description = "App Service plan SKU for the Function App. Y1 = Consumption (serverless, no dedicated-VM quota); EP1+ = Elastic Premium (requires VM quota, enables VNet integration)."
+  default     = "Y1"
+}
+
 variable "cosmos_vector_dimensions" {
   type        = number
   description = "Embedding vector dimensions for Cosmos DB vector search."

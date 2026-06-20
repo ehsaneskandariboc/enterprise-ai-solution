@@ -76,6 +76,7 @@ module "function_app" {
   resource_group_name        = azurerm_resource_group.main.name
   location                   = azurerm_resource_group.main.location
   subnet_id                  = module.networking.functions_subnet_id
+  plan_sku                   = var.function_plan_sku
   application_insights_key   = module.log_analytics.instrumentation_key
   app_insights_connection    = module.log_analytics.connection_string
   cosmos_endpoint            = module.cosmosdb.endpoint
