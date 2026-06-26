@@ -17,7 +17,7 @@ Ensure all Azure resources provisioned via Terraform follow Microsoft-recommende
 ---
 
 ### 2. Naming Conventions
-- Follow standardized naming:examples: ctr-prod-weu-rg, ctr-prod-weu-capenv
+- Follow standardized naming examples (e.g., `ctr-prod-weu-rg`, `ctr-prod-weu-capenv`)
 - Use consistent abbreviations across modules
 
 ---
