@@ -17,6 +17,7 @@ container platforms:
 | Secrets | Azure Key Vault (RBAC, purge protection) | `modules/key_vault` |
 | Data lake | Storage Account + containers | `modules/storage` |
 | Vector store | Cosmos DB (NoSQL **vector search**) | `modules/cosmosdb` |
+| Data orchestration | Azure Data Factory (managed identity) | `modules/data_factory` |
 | Event/ingestion compute | Azure Functions (Elastic Premium, Python) | `modules/function_app` |
 | API / inference | Azure Container Apps (autoscaling) | `modules/container_apps` |
 | Orchestration / GPU-ready compute | AKS (autoscaling, Azure CNI) | `modules/aks` |
@@ -93,6 +94,12 @@ Configure these repository secrets/variables:
 - Cosmos DB is created with the `EnableNoSQLVectorSearch` capability so the
   `embeddings` container can store and query embedding vectors
   (`cosmos_vector_dimensions`, default 1536).
+- **Azure Data Factory** (`modules/data_factory`) is provisioned with a
+  system-assigned managed identity and ships activity/pipeline/trigger logs and
+  metrics to the shared Log Analytics workspace. Optional GitHub source-control
+  integration (`adf_github_configuration`) and a managed virtual network
+  (`adf_enable_managed_virtual_network`) are available; set
+  `adf_public_network_enabled = false` when fronting it with private endpoints.
 - Resource names that must be globally unique (storage, ACR, Cosmos, Function
   App, Key Vault) get a short random suffix.
 - **`manage_acr_role_assignments`** (default `true`) controls whether Terraform

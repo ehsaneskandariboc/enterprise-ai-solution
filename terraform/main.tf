@@ -67,6 +67,19 @@ module "cosmosdb" {
   tags                       = local.common_tags
 }
 
+module "data_factory" {
+  source = "./modules/data_factory"
+
+  name                           = "adf-${local.name_prefix}-${random_string.suffix.result}"
+  resource_group_name            = azurerm_resource_group.main.name
+  location                       = azurerm_resource_group.main.location
+  log_analytics_workspace_id     = module.log_analytics.workspace_id
+  enable_managed_virtual_network = var.adf_enable_managed_virtual_network
+  public_network_enabled         = var.adf_public_network_enabled
+  github_configuration           = var.adf_github_configuration
+  tags                           = local.common_tags
+}
+
 module "function_app" {
   source = "./modules/function_app"
   count  = var.deploy_function_app ? 1 : 0
