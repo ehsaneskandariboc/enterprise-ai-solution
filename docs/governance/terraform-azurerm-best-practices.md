@@ -38,8 +38,8 @@ Ensure all Azure resources provisioned via Terraform follow Microsoft-recommende
 
 ### 5. Monitoring & Diagnostics
 - All resources must include:
-- Diagnostic settings
-- Log Analytics integration
+  - Diagnostic settings
+  - Log Analytics integration
 
 ---
 
