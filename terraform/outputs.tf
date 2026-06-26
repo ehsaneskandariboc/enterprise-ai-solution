@@ -37,3 +37,13 @@ output "key_vault_uri" {
   description = "URI of the Key Vault."
   value       = module.key_vault.vault_uri
 }
+
+output "data_factory_name" {
+  description = "Name of the Azure Data Factory."
+  value       = module.data_factory.name
+}
+
+output "data_factory_id" {
+  description = "Resource ID of the Azure Data Factory."
+  value       = module.data_factory.id
+}

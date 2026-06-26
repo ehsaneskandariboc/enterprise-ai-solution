@@ -90,6 +90,30 @@ variable "cosmos_vector_dimensions" {
   default     = 1536
 }
 
+variable "adf_enable_managed_virtual_network" {
+  type        = bool
+  description = "Whether to enable the Azure Data Factory managed virtual network for network-isolated integration runtimes."
+  default     = false
+}
+
+variable "adf_public_network_enabled" {
+  type        = bool
+  description = "Whether the Azure Data Factory is reachable over the public network. Set to false when using private endpoints only."
+  default     = true
+}
+
+variable "adf_github_configuration" {
+  type = object({
+    account_name    = string
+    branch_name     = string
+    git_url         = string
+    repository_name = string
+    root_folder     = string
+  })
+  description = "Optional GitHub source-control integration for Data Factory pipeline authoring. Leave null to use Live (factory) mode."
+  default     = null
+}
+
 variable "manage_acr_role_assignments" {
   type        = bool
   description = "Whether Terraform manages the AcrPull role assignments for AKS and Container Apps. This requires the deploying identity to have role-assignment write permission (e.g. User Access Administrator or Owner). Set to false when that permission is unavailable; grant AcrPull out-of-band instead."
